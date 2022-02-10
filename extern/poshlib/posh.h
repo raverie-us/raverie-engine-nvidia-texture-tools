@@ -296,7 +296,10 @@ LLVM:
 ** Determine target operating system
 ** ----------------------------------------------------------------------------
 */
-#if defined linux || defined __linux__
+//+WELDER
+// Treat Emscripten like a linux/posix platform.
+#if defined linux || defined __linux__ || defined EMSCRIPTEN
+//-WELDER
 #  define POSH_OS_LINUX 1 
 #  define POSH_OS_STRING "Linux"
 #endif
@@ -550,7 +553,10 @@ LLVM:
 #endif
 
 #if !defined POSH_CPU_STRING
-#  error POSH cannot determine target CPU
+//+WELDER
+// Emscripten doesn't have a specific CPU.
+//#  error POSH cannot determine target CPU
+//-WELDER
 #  define POSH_CPU_STRING "Unknown" /* this is here for Doxygen's benefit */
 #endif
 

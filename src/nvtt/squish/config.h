@@ -26,6 +26,14 @@
 #ifndef SQUISH_CONFIG_H
 #define SQUISH_CONFIG_H
 
+//+WELDER
+// Emscripten/wasm doesn't have SIMD yet.
+#ifdef EMSCRIPTEN
+#   define SQUISH_USE_ALTIVEC 0
+#   define SQUISH_USE_SSE 0
+#endif
+//-WELDER
+
 // Set to 1 when building squish to use altivec instructions.
 #ifndef SQUISH_USE_ALTIVEC
 #	define SQUISH_USE_ALTIVEC defined(__VEC__)

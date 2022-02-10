@@ -1,4 +1,4 @@
-// This code is in the public domain -- Ignacio Castaño <castano@gmail.com>
+// This code is in the public domain -- Ignacio CastaÃ±o <castano@gmail.com>
 
 #pragma once
 #ifndef NV_CORE_H
@@ -113,7 +113,10 @@
 #elif defined POSH_CPU_AARCH64
 #   define NV_CPU_ARM_64 1
 #else
-#   error "Unsupported CPU"
+//+WELDER
+// Emscripten doesn't have a specific CPU.
+//#   error "Unsupported CPU"
+//-WELDER
 #endif
 
 
@@ -364,7 +367,10 @@ namespace nv {
 #   elif NV_OS_XBOX
 #       include "DefsVcXBox.h"
 #   else
-#       error "MSVC: Platform not supported"
+//+WELDER
+// For compiling Empty/Stub platform with no specific OS.
+#       include "DefsEmpty.h"
+//-WELDER
 #   endif
 #elif NV_CC_GNUC
 #   if NV_OS_LINUX
@@ -373,11 +379,13 @@ namespace nv {
 #       include "DefsGnucDarwin.h"
 #   elif NV_OS_MINGW
 #       include "DefsGnucWin32.h"
-#   elif NV_OS_CYGWIN
-#       error "GCC: Cygwin not supported"
-#   else
-#       error "GCC: Platform not supported"
+//+WELDER
+// For compiling Empty/Stub platform with no specific OS.
+#    else
+#       include "DefsEmpty.h"
+//-WELDER
 #   endif
+
 #endif
 
 #endif // NV_CORE_H
