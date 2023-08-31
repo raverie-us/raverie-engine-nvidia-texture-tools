@@ -298,7 +298,7 @@ LLVM:
 */
 //+WELDER
 // Treat Emscripten like a linux/posix platform.
-#if defined linux || defined __linux__ || defined EMSCRIPTEN
+#if 1
 //-WELDER
 #  define POSH_OS_LINUX 1 
 #  define POSH_OS_STRING "Linux"

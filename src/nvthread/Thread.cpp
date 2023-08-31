@@ -27,6 +27,8 @@ struct Thread::Private
     HANDLE thread;
 #elif NV_OS_USE_PTHREAD
     pthread_t thread;
+#else
+    int thread;
 #endif
 
     ThreadFunc * func;

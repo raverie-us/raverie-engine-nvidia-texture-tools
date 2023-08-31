@@ -196,7 +196,7 @@ namespace nv
 #elif NV_OS_DARWIN || NV_OS_FREEBSD || NV_OS_NETBSD || NV_OS_OPENBSD || NV_OS_ORBIS
         return isnan(f);
 #elif NV_OS_LINUX
-        return isnanf(f);
+        return isnan(f);
 #else
 #   error "isNan not supported"
 #endif

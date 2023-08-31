@@ -80,7 +80,7 @@
 // Threading:
 // some platforms don't implement __thread or similar for thread-local-storage
 #if NV_OS_UNIX || NV_OS_ORBIS || NV_OS_IOS
-#   define NV_OS_USE_PTHREAD 1
+#   define NV_OS_USE_PTHREAD 0
 #   if 0  //Apple finally added TLS support to iOS!// NV_OS_IOS
 #       define NV_OS_HAS_TLS_QUALIFIER 0
 #   else

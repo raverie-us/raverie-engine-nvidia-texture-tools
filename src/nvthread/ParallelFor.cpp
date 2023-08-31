@@ -1,4 +1,4 @@
-// This code is in the public domain -- Ignacio Castaño <castano@gmail.com>
+// This code is in the public domain -- Ignacio Castaï¿½o <castano@gmail.com>
 
 #include "ParallelFor.h"
 #include "Thread.h"
@@ -9,7 +9,7 @@
 
 using namespace nv;
 
-#define ENABLE_PARALLEL_FOR 1
+#define ENABLE_PARALLEL_FOR 0
 
 static void worker(void * arg, int tid) {
     ParallelFor * owner = (ParallelFor *)arg;
@@ -53,7 +53,7 @@ void ParallelFor::run(uint count, uint step/*= 1*/) {
 
     nvDebugCheck(idx >= count);
 #else
-    for (int i = 0; i < toI32(count); i++) {
+    for (int i = 0; i < int(count); i++) {
         task(context, i);
     }
 #endif
